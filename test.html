@@ -1,0 +1,37 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <script type="text/javascript">
+        var count = 10;
+        var sh;
+        function counter(){
+            sh = setInterval(jishi,1000);
+        }
+
+        function jishi(){
+            var btn = document.getElementById("btn");
+            btn.innerHTML = "倒计时"+(--count)+"秒";
+            if(count == 0){
+                btn.disabled = false;
+                btn.innerHTML = "开始点击";
+                clearInterval(sh);
+
+                btn.onclick = function(){
+                    var result = document.getElementById("result");
+                    setInterval(function(){
+                        //执行点击操作
+                        result.innerHTML = "您点击了："+(count++)+"次";
+                    },200);
+                };
+                btn.click();
+            }
+        }
+
+        window.onload = counter;
+    </script>
+</head>
+<body>
+    <button id="btn" disabled="disabled">倒计时10秒</button>
+    <span id="result"></span>
+</body>
+</html>
